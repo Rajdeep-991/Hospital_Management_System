@@ -27,7 +27,7 @@ Requirements
 - MySQL Database
 - MySQL Connector/J (JDBC Driver)
 
-How to Use
+How To Use
 ----------
 - Database Setup:
   - Create a MySQL database named hospital_management_system.
