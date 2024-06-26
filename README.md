@@ -8,9 +8,9 @@ This project is a simple hospital management system developed in Java. It includ
 Features
 --------
 - Patient Management:
-  * Add new patients
-  * View all patients
-  * Check if a patient exists by ID
+  - Add new patients
+  - View all patients
+  - Check if a patient exists by ID
 
 - Doctor Management:
   - View all doctors
@@ -35,30 +35,34 @@ How to Use
   - Update the database connection details in HospitalManagementSystem.java with your MySQL username and password.
 
 - Compile and Run:
-  - Compile the Java files: javac -d . *.java
-  - Run the main class: java Hospital_Management_System.HospitalManagementSystem
+  - Compile the Java files:
+
+    javac -d . *.java
+  - Run the main class:
+
+    java Hospital_Management_System.HospitalManagementSystem
 
 - Interacting with the System:
-  - Follow the on-screen instructions to add patients, view patients, view doctors, book appointments, and view appointments.
+  - Use the main menu displayed in the console to navigate through the options for managing patients, doctors, and appointments.
 
 Tables Structure
 ----------------
 Ensure the database tables are created with the following structure:
 
-CREATE TABLE Patients (
+- CREATE TABLE Patients (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     Name VARCHAR(50),
     Age INT,
     Gender VARCHAR(10)
 );
 
-CREATE TABLE Doctors (
+- CREATE TABLE Doctors (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     Name VARCHAR(50),
     Specialization VARCHAR(50)
 );
 
-CREATE TABLE Appointments (
+- CREATE TABLE Appointments (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     Patient_ID INT,
     Doctor_ID INT,
@@ -71,12 +75,12 @@ How It Works
 ------------
 The Hospital Management System is designed to simplify and automate the process of managing patients, doctors, and appointments in a hospital setting. Here's a detailed breakdown of how each component of the system works:
 
-1. Database Connection
+- Database Connection
   - Setup: The system connects to a MySQL database using JDBC (Java Database Connectivity).
   - Configuration: Database connection details (URL, username, and password) are specified in the HospitalManagementSystem.java file.
   - Driver Loading: The MySQL JDBC driver is loaded using Class.forName("com.mysql.cj.jdbc.Driver");.
 
-2. Patient Management
+- Patient Management
   - Adding Patients:
     - The addPatient() method in the Patient class prompts the user to enter patient details (name, age, gender).
     - These details are inserted into the Patients table in the database using an INSERT SQL query.
@@ -88,7 +92,7 @@ The Hospital Management System is designed to simplify and automate the process 
     - The checkPatient() method checks if a patient exists in the database by their ID.
     - This is done using a SELECT query with the patient ID as a parameter.
 
-3. Doctor Management
+- Doctor Management
   - Viewing Doctors:
     - The viewDoctor() method retrieves all records from the Doctors table.
     - It displays the doctor details (ID, name, specialization) in a formatted table.
@@ -96,7 +100,7 @@ The Hospital Management System is designed to simplify and automate the process 
     - The checkDoctor() method checks if a doctor exists in the database by their ID.
     - This is done using a SELECT query with the doctor ID as a parameter.
 
-4. Appointment Management
+- Appointment Management
   - Booking Appointments:
     - The bookAppointment() method allows users to book an appointment by entering the patient ID, doctor ID, and appointment date.
     - The system first checks if the patient and doctor exist using the checkPatient() and checkDoctor() methods.
