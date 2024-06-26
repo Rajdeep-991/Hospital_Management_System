@@ -85,9 +85,11 @@ The Hospital Management System is designed to simplify and automate the process 
     - The addPatient() method in the Patient class prompts the user to enter patient details (name, age, gender).
     - These details are inserted into the Patients table in the database using an INSERT SQL query.
     - The system confirms whether the patient details were added successfully.
+  
   - Viewing Patients:
     - The viewPatient() method retrieves all records from the Patients table.
     - It displays the patient details in a formatted table.
+  
   - Checking Patient Existence:
     - The checkPatient() method checks if a patient exists in the database by their ID.
     - This is done using a SELECT query with the patient ID as a parameter.
@@ -96,6 +98,7 @@ The Hospital Management System is designed to simplify and automate the process 
   - Viewing Doctors:
     - The viewDoctor() method retrieves all records from the Doctors table.
     - It displays the doctor details (ID, name, specialization) in a formatted table.
+  
   - Checking Doctor Existence:
     - The checkDoctor() method checks if a doctor exists in the database by their ID.
     - This is done using a SELECT query with the doctor ID as a parameter.
@@ -107,9 +110,11 @@ The Hospital Management System is designed to simplify and automate the process 
     - It then checks if the doctor is available on the specified date using the checkDoctorAvailability() method.
     - If all checks pass, the appointment details are inserted into the Appointments table using an INSERT SQL query.
     - The system confirms whether the appointment was booked successfully.
+  
   - Viewing Appointments:
     - The viewAppointment() method retrieves all records from the Appointments table.
     - It displays the appointment details (ID, patient ID, doctor ID, appointment date) in a formatted table.
+  
   - Checking Doctor Availability:
     - The checkDoctorAvailability() method checks if a doctor is available on a given date by counting the number of appointments for that doctor on the specified date.
     - This is done using a SELECT query with the doctor ID and appointment date as parameters.
