@@ -137,7 +137,7 @@ public class HospitalManagementSystem
                 System.out.printf("| %-9s| %-27s| %-27s| %-19s|\n", id, patientName, doctorName, formattedDate);
                 System.out.println("+----------+----------------------------+----------------------------+--------------------+");
             }
-        } catch (Exception e) {  // Catch both SQLException and ParseException
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
