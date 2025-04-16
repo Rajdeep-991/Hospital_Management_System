@@ -107,27 +107,37 @@ public class HospitalManagementSystem
     // Method to view all appointments
     public static void viewAppointment(Patient patient, Doctor doctor, Connection connection, Scanner scanner)
     {
-        String query = "select * from Appointments";  // SQL query to select all appointments
+        String query = "SELECT a.ID, p.Name AS Patient_Name, d.Name AS Doctor_Name, a.Appointment_Date " +
+                "FROM Appointments a " +
+                "JOIN Patients p ON a.Patient_ID = p.ID " +
+                "JOIN Doctors d ON a.Doctor_ID = d.ID";
+
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
-            // Print table header
             System.out.println("\nAPPOINTMENTS TABLE");
             System.out.println("------------------\n");
-            System.out.println("+----+------------+-----------+------------------+");
-            System.out.println("| ID | Patient_ID | Doctor_ID | Appointment_Date |");
-            System.out.println("+----+------------+-----------+------------------+");
+            System.out.println("+----------+----------------------------+----------------------------+--------------------+");
+            System.out.println("| ID       | Patient Name               | Doctor Name                | Appointment Date   |");
+            System.out.println("+----------+----------------------------+----------------------------+--------------------+");
             // Iterate through the result set and print each appointment's details
+            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");  // MySQL default format
+            SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy"); // Desired format
+
             while (resultSet.next())
             {
                 int id = resultSet.getInt("ID");
-                int patientID = resultSet.getInt("Patient_ID");
-                int doctorID = resultSet.getInt("Doctor_ID");
+                String patientName = resultSet.getString("Patient_Name");
+                String doctorName = resultSet.getString("Doctor_Name");
                 String appointmentDate = resultSet.getString("Appointment_Date");
-                System.out.printf("| %-3s| %-11s| %-10s| %-17s|\n", id, patientID, doctorID, appointmentDate);
-                System.out.println("+----+------------+-----------+------------------+");
+
+                // Convert date format
+                String formattedDate = outputFormat.format(inputFormat.parse(appointmentDate));
+
+                System.out.printf("| %-9s| %-27s| %-27s| %-19s|\n", id, patientName, doctorName, formattedDate);
+                System.out.println("+----------+----------------------------+----------------------------+--------------------+");
             }
-        }catch (SQLException e){
+        } catch (Exception e) {  // Catch both SQLException and ParseException
             e.printStackTrace();
         }
     }
